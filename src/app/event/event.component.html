@@ -1,0 +1,56 @@
+<div class="container">
+    <button class="btn btn-primary" (click)="addEvent()">Add Event</button>
+    <table class="table table-bordered m-2">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let event of eventList; let i = index">
+                <td>{{event.Title}}</td>
+                <td>{{event.Location}}</td>
+                <td>{{event.Date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalId">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="eventForm">
+                <div class="form-group">
+                    <label>Event Title</label>
+                    <input type="text" formControlName="Title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Event Date</label>
+                    <input type="date" class="form-control" formControlName="Date">
+                </div>
+                <div class="form-group">
+                    <label>Event Location</label>
+                    <input type="text" class="form-control" formControlName="Location">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea formControlName="Description" class="form-control" type=text></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="submitForm(eventForm)">Save changes</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
